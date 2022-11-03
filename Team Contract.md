@@ -16,12 +16,15 @@ On each weekly meeting, one of the team member will be the "meeting host" to ens
 We will discuss each part before we start, and try to assign seperate part to different person equally. When we have unexpected complications or unforeseen work, we will try to discuss it first, and try to gather some information from internet. On each meeting, there will be only one commiter to commit code to github for preventing errors on merging.
 
 5. **Time Commitment** 
-We will work on the project no less than 6 hours weekly.We need to tell each other 3 days before the meeting date. If only one person cannot meeting on time, we will meet as usual. Otherwise, we will try to assign a different time to meet.
+We will work on the project no less than 6 hours weekly. We need to tell each other 3 days before the meeting date. If only one person cannot meeting on time, we will meet as usual. Otherwise, we will try to assign a different time to meet.
 6. **Conflict Resolution** 
 Conflicts will be solved in zoom meetings to ensure good communication. Discussions and votes are used as described in the Respect part of this contract. When the issue is debatable or unsolvable, team members are encouraged to ask staff members for help via Queue@Illinois, and Discord.
 
 ## Signatures
 Yiming Niu
+
 Tianyang Sun
+
 Sihan Chen (netid: sihan5)
+
 Xiaodi Wu

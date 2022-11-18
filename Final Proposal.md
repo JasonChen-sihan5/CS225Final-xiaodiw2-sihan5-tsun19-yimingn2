@@ -26,5 +26,5 @@ Below are the important components (with expected dates) of our project:
 2. Data processing: The collected data might be in different formats, so we should transform the data into a unified format that C++ programs can properly process. （Nov 12th--Nov 14th)
 3. BFS traversal algorithm（Nov 14nd--Nov 18th)
 4. Shortest Path algorithm: Dijkstra’s algorithm. The major function of our project.（Nov 18th--Nov 27th)
-5. Graphic output: visualization. (Nov 27th- Dec 7th)
+5. Graphic output: visualization. (Nov 27th--Dec 7th)
 6. Before the Mid-Project check-in, We shall finish collecting data and be able to implement the code of BFS traversal.

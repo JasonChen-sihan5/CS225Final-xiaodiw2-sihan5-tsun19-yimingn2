@@ -1,6 +1,6 @@
 /**
- * @file schedule.h
- * Exam scheduling using graph coloring
+ * @file read_data.h
+ * 
  */
 
 #pragma once
@@ -60,11 +60,11 @@ class Graph
     int V = 20000;
     vector<pair<int, int>> adj[20000];
 
-    void printAllPathsUtil(int, int, bool[], int[], int &, int, int);
+    void printAllPathsUtil(int, int, bool[], int[], int &, int, int, int);
 
 public:
     Graph(int V);
     void addEdge(int u, int v, int wt);
-    void printAllPaths(int s, int d);
+    void printAllPaths(int s, int d, V2D distances, V2D transfer);
     void printGraph();
 };

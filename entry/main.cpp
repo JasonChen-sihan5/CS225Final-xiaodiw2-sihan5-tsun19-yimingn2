@@ -9,6 +9,8 @@ int main()
 {
 
     V2D routes = file_to_V2D("../data/routes_with_distance.csv");
+    V2D airports = file_to_V2D("../data/American_Airports.csv");
+    V2D distances = file_to_V2D("../data/Distance_of_All_Airports.csv");
     // V2D airports = file_to_V2D("../airports.csv");
     // V2D distances = file_to_V2D("../Distance_of_All_Airports.csv");
     Graph g(20000);
@@ -42,9 +44,45 @@ int main()
     //     std::cout << routes[i][routes[i].size() - 1];
     //     std::cout << "" << std::endl;
     // }
-    // std::ofstream out("../routes_with_distance.csv");
 
-    // for (auto &row : routes)
+    // Graph g(20000);
+    // for (unsigned i = 0; i < routes.size(); i++)
+    // {
+    //     // cout << routes[i][3] << endl;
+    //     int start = stoi(routes[i].at(3));
+    //     int end = stoi(routes[i].at(5));
+
+    //     g.addEdge(start, end);
+    // }
+    // g.printGraph();
+    // V2D american_airports;
+    // for (unsigned i = 0; i < airports.size(); i++)
+    // {
+    //     if (airports[i].size() > 3 && airports[i][3] == "\"United States\"")
+    //     {
+    //         vector<string> line;
+    //         if (airports[i][4] != "\\N")
+    //         {
+    //             line.push_back(airports[i][0]);
+    //             line.push_back(airports[i][4]);
+    //             american_airports.push_back(line);
+    //         }
+    //     }
+    // }
+    // cout << american_airports[1].size() << endl;
+    // for (int i = 0; i < (int)american_airports.size(); ++i)
+    // {
+    //     for (int j = 0; j < (int)american_airports[i].size() - 1; ++j)
+    //     {
+    //         std::cout << american_airports[i][j] << ", ";
+    //     }
+    //     std::cout << american_airports[i][american_airports[i].size() - 1];
+    //     std::cout << "" << std::endl;
+    // }
+
+    // std::ofstream out("../American_Airports.csv");
+
+    // for (auto &row : american_airports)
     // {
     //     unsigned i = 0;
     //     for (auto col : row)
@@ -60,29 +98,6 @@ int main()
     //     out << '\n';
     // }
     // out.close();
-    // Graph g(20000);
-    // for (unsigned i = 0; i < routes.size(); i++)
-    // {
-    //     // cout << routes[i][3] << endl;
-    //     int start = stoi(routes[i].at(3));
-    //     int end = stoi(routes[i].at(5));
-
-    //     g.addEdge(start, end);
-    // }
-    // g.printGraph();
-    // vector<string> american_airports_num;
-    // vector<string> american_airports_IATA;
-    // for (unsigned i = 0; i < airports.size(); i++)
-    // {
-    //     if (airports[i].size() > 3 && airports[i][3] == "\"United States\"")
-    //     {
-    //         if (airports[i][4] != "\\N")
-    //         {
-    //             american_airports_num.push_back(airports[i][0]);
-    //             american_airports_IATA.push_back(airports[i][4]);
-    //         }
-    //     }
-    // }
     // for (int i = 0; i < (int)american_airports_IATA.size(); ++i)
     // {
     //     for (int j = 0; j < (int)american_airports_IATA[i].size() - 1; ++j)
@@ -92,7 +107,13 @@ int main()
     //     std::cout << american_airports_IATA[i][american_airports_IATA[i].size() - 1];
     //     std::cout << "" << std::endl;
     // }
-    g.printAllPaths(3484, 3830);
+    int from, to;
+    cout << "Type the airport from: ";
+    cin >> from;
+    cout << "Type the airport to: ";
+    cin >> to;
+    g.printAllPaths(from, to, distances, airports);
+
     // g.printGraph();
     // map<string, int> IATA_number;
     // for (unsigned i = 0; i < american_airports_IATA.size(); i++)

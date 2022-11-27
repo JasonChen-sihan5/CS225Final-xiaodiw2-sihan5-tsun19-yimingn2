@@ -1,6 +1,5 @@
 /**
- * @file schedule.cpp
- * Exam scheduling using graph coloring
+ * @file read_data.cpp
  */
 
 #include <iostream>
@@ -135,7 +134,7 @@ void Graph::addEdge(int u, int v, int wt)
     }
 }
 
-void Graph::printAllPaths(int s, int d)
+void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer)
 {
     bool *visited = new bool[V];
     int *path = new int[V];
@@ -144,20 +143,43 @@ void Graph::printAllPaths(int s, int d)
     {
         visited[i] = false;
     }
-    printAllPathsUtil(s, d, visited, path, path_index, 0, 19999);
+    string from, to;
+    int distance = 10000;
+    for (unsigned i = 0; i < transfer.size(); i++)
+    {
+        if (stoi(transfer[i][0]) == s)
+        {
+            from = transfer[i][1];
+        }
+        if (stoi(transfer[i][0]) == d)
+        {
+            to = transfer[i][1];
+        }
+    }
+    for (unsigned i = 0; i < distances.size(); i++)
+    {
+        if (distances[i][0] == from && distances[i][1] == to)
+        {
+            distance = stoi(distances[i][2]);
+            break;
+        }
+    }
+    int dis_max = distance * 3;
+    cout << dis_max << endl;
+    printAllPathsUtil(s, d, visited, path, path_index, 0, 19999, dis_max);
 }
 
 void Graph::printAllPathsUtil(int u, int d, bool visited[],
-                              int path[], int &path_index, int distance, int prev)
+                              int path[], int &path_index, int distance, int prev, int dis_max)
 {
+    if (distance > 0.6 * dis_max && path_index <= 3)
+    {
+        return;
+    }
     if (path_index > 3)
     {
         return;
     }
-    // if (distance > 5000)
-    // {
-    //     return;
-    // }
     visited[u] = true;
     path[path_index] = u;
     path_index++;
@@ -184,7 +206,7 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
         for (i = adj[u].begin(); i != adj[u].end(); ++i)
             if (!visited[(*i).first])
                 printAllPathsUtil((*i).first, d, visited, path,
-                                  path_index, distance, u);
+                                  path_index, distance, u, dis_max);
     }
     path_index--;
     for (auto it = adj[prev].begin(); it != adj[prev].end(); it++)

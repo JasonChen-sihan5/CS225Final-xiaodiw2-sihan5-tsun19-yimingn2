@@ -1,0 +1,10 @@
+/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/CMakeFiles/main.dir
+/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/CMakeFiles/edit_cache.dir
+/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/CMakeFiles/rebuild_cache.dir
+/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/lib/CMakeFiles/lodepng.dir
+/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/lib/CMakeFiles/cs225.dir
+/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/lib/CMakeFiles/edit_cache.dir
+/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/lib/CMakeFiles/rebuild_cache.dir
+/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/src/CMakeFiles/src.dir
+/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/src/CMakeFiles/edit_cache.dir
+/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/src/CMakeFiles/rebuild_cache.dir

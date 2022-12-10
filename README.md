@@ -2,9 +2,9 @@
 
 ## Project Summary
 
-### Running Instruction
-
 ## Code
+
+### Running Instruction
 
 ## Data
 

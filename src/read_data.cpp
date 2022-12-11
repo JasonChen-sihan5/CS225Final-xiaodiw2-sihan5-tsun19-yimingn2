@@ -204,7 +204,7 @@ void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer, string from
         }
         cout << "***   distance is " << store[i].at(store[i].size() - 1);
         double price = airportsRank(calculatePrice(store[i].at(store[i].size() - 1)) * 0.8, s);
-        cout << " and the corresponding price is " << price << " for economy class and " << price * 2.5 << " for the First class :)";
+        cout << " miles, and the corresponding price is $" << price << " for economy class and " << price * 2.5 << " for the First class :)";
         cout << endl;
         cout << endl;
     }
@@ -213,7 +213,7 @@ void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer, string from
 
 void Graph::printCorresAirports(V2D airports, vector<vector<int>> store)
 {
-    cout << "The corresponding airports name is: " << endl;
+    cout << "The corresponding airports' names and OpenFlights Code are: " << endl;
     int i = 0;
     for (unsigned i = 0; i < (unsigned)min((int)store.size(), 10); i++)
     {

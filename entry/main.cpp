@@ -1,5 +1,5 @@
 #include <iostream>
-#include "read_data.h"
+#include "../src/read_data.h"
 #include <list>
 #include <map>
 #include <iterator>
@@ -8,10 +8,10 @@ using namespace std;
 int main()
 {
 
-    V2D routes = file_to_V2D("../routes_with_distance.csv");
-    V2D airports = file_to_V2D("../American_Airports.csv");
-    V2D distances = file_to_V2D("../Distance_of_All_Airports.csv");
-    V2D rank = file_to_V2D("../AirportRanking.csv");
+    V2D routes = file_to_V2D("../data/routes_with_distance.csv");
+    V2D airports = file_to_V2D("../data/American_Airports.csv");
+    V2D distances = file_to_V2D("../data/Distance_of_All_Airports.csv");
+    V2D rank = file_to_V2D("../data/AirportRanking.csv");
     for (unsigned i = 0; i < airports.size(); i++)
     {
         bool check = false;

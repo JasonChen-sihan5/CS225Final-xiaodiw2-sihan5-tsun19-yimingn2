@@ -6,10 +6,32 @@
 
 ## Project Summary
 
+​	Our project's purpose is giving suggestion to travelers to find proper flight routes from their departures to terminals.
+
 ## Code
 
+​	**All code of this project can be found in the folder [src](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/tree/main/src) and [entry](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/tree/main/entry).** 
 
-### Running Instruction
+> **Note**
+>
+> 1. Make sure you are running the program in [Docker](https://www.docker.com/). If not, follow this [Guide](https://courses.engr.illinois.edu/cs225/sp2022/resources/own-machine/) to get started.
+>
+> 2. In the first time you try to compile our project, please delete the original `build` folder and using `mkdir build` in your terminal to create your own empty folder.
+>
+> 3. Then, to using `cmake` for configuring, please using the following command in your terminal:
+>
+>    - `cd build`
+>    - `cmake ..`
+>
+>    Then you can using `make` command to compile.
+
+### Running Instructions
+
+#### Exexution	
+
+1. Running `./main` to execute `main.cpp` in the folder `entry/` directory.
+
+
 
 ## Data
 

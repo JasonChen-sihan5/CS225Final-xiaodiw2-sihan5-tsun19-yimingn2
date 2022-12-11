@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../src/read_data.h"
+#include "read_data.h"
 #include <list>
 #include <map>
 #include <iterator>
@@ -8,9 +8,36 @@ using namespace std;
 int main()
 {
 
-    V2D routes = file_to_V2D("../data/routes_with_distance.csv");
-    V2D airports = file_to_V2D("../data/American_Airports.csv");
-    V2D distances = file_to_V2D("../data/Distance_of_All_Airports.csv");
+    V2D routes = file_to_V2D("../routes_with_distance.csv");
+    V2D airports = file_to_V2D("../American_Airports.csv");
+    V2D distances = file_to_V2D("../Distance_of_All_Airports.csv");
+    V2D rank = file_to_V2D("../AirportRanking.csv");
+    for (unsigned i = 0; i < airports.size(); i++)
+    {
+        bool check = false;
+        for (unsigned j = 0; j < rank.size(); j++)
+        {
+            if (airports[i][1] == rank[j][2])
+            {
+                check = true;
+                airports[i].push_back(to_string(j));
+                break;
+            }
+        }
+        if (!check)
+        {
+            airports[i].push_back(to_string(387));
+        }
+    }
+    // for (int i = 0; i < (int)airports.size(); ++i)
+    // {
+    //     for (int j = 0; j < (int)airports[i].size() - 1; ++j)
+    //     {
+    //         std::cout << airports[i][j] << ", ";
+    //     }
+    //     std::cout << airports[i][airports[i].size() - 1];
+    //     std::cout << "" << std::endl;
+    // }
     // V2D airports = file_to_V2D("../airports.csv");
     // V2D distances = file_to_V2D("../Distance_of_All_Airports.csv");
     Graph g(20000);
@@ -80,9 +107,9 @@ int main()
     //     std::cout << "" << std::endl;
     // }
 
-    // std::ofstream out("../American_Airports.csv");
+    // std::ofstream out("../lalalala.csv");
 
-    // for (auto &row : american_airports)
+    // for (auto &row : lala)
     // {
     //     unsigned i = 0;
     //     for (auto col : row)
@@ -107,12 +134,39 @@ int main()
     //     std::cout << american_airports_IATA[i][american_airports_IATA[i].size() - 1];
     //     std::cout << "" << std::endl;
     // }
-    int from, to;
-    cout << "Type the airport from: ";
-    cin >> from;
-    cout << "Type the airport to: ";
-    cin >> to;
-    g.printAllPaths(from, to, distances, airports);
+    while (true)
+    {
+        int from, to;
+        cout << "Type the airport from: ";
+        cin >> from;
+        cout << "Type the airport to: ";
+        cin >> to;
+        string fromString;
+        string toString;
+        for (unsigned i = 0; i < airports.size(); i++)
+        {
+            if (from == stoi(airports[i][0]))
+            {
+                fromString = airports[i][1];
+            }
+            if (to == stoi(airports[i][0]))
+            {
+                toString = airports[i][1];
+            }
+        }
+        string answer;
+        cout << "Please make sure you want to go from " << fromString << " to " << toString << "(Y/N)";
+        cin >> answer;
+        if (answer == "Y" || answer == "y")
+        {
+            g.printAllPaths(from, to, distances, airports, fromString, toString);
+            break;
+        }
+        else
+        {
+            continue;
+        }
+    }
 
     // g.printGraph();
     // map<string, int> IATA_number;

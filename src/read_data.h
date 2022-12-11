@@ -1,6 +1,6 @@
 /**
- * @file read_data.h
- * 
+ * @file schedule.h
+ * Exam scheduling using graph coloring
  */
 
 #pragma once
@@ -59,12 +59,18 @@ class Graph
 {
     int V = 20000;
     vector<pair<int, int>> adj[20000];
-
-    void printAllPathsUtil(int, int, bool[], int[], int &, int, int, int);
+    void printAllPathsUtil(int, int, bool[], int[], int &, int, int, int, vector<vector<int>> &);
 
 public:
     Graph(int V);
     void addEdge(int u, int v, int wt);
-    void printAllPaths(int s, int d, V2D distances, V2D transfer);
+    void printAllPaths(int s, int d, V2D distances, V2D transfer, string from, string to);
     void printGraph();
+    int calculatePrice(int distance);
+    double airportsRank(double price, string rank);
+    void printCorresAirports(V2D airports, vector<vector<int>> store);
+    static bool sortcol(vector<int> &v1, vector<int> &v2)
+    {
+        return v1[3] < v2[3];
+    }
 };

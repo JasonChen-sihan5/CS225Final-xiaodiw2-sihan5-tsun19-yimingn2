@@ -1,5 +1,6 @@
 /**
- * @file read_data.cpp
+ * @file schedule.cpp
+ * Exam scheduling using graph coloring
  */
 
 #include <iostream>
@@ -134,8 +135,9 @@ void Graph::addEdge(int u, int v, int wt)
     }
 }
 
-void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer)
+void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer, string fromString, string toString)
 {
+    vector<vector<int>> store;
     bool *visited = new bool[V];
     int *path = new int[V];
     int path_index = 0;
@@ -166,11 +168,80 @@ void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer)
     }
     int dis_max = distance * 3;
     cout << dis_max << endl;
-    printAllPathsUtil(s, d, visited, path, path_index, 0, 19999, dis_max);
+    printAllPathsUtil(s, d, visited, path, path_index, 0, 19999, dis_max, store);
+    // for (unsigned i = 0; i < store.size(); i++)
+    // {
+    //     for (unsigned j = 0; j < store[i].size() - 1; j++)
+    //     {
+    //         cout << store[i][j] << " ";
+    //     }
+    //     cout << "***   distance is " << store[i].at(store[i].size() - 1);
+    //     cout << endl;
+    // }
+    sort(store.begin(), store.end(), sortcol);
+    cout << "The recommend routes with price according to airports ranking are list below" << endl;
+    for (unsigned i = 0; i < (unsigned)min((int)store.size(), 10); i++)
+    {
+        string s;
+        for (unsigned j = 0; j < store[i].size() - 1; j++)
+        {
+            if (j == 0)
+                cout << fromString << " ";
+            if (j == 2)
+                cout << toString << " ";
+            if (j == 1)
+            {
+                for (unsigned k = 0; k < transfer.size(); k++)
+                {
+                    if (store[i][1] == stoi(transfer[k][0]))
+                    {
+                        s = transfer[k][2];
+                        cout << transfer[k][1] << " ";
+                        break;
+                    }
+                }
+            }
+        }
+        cout << "***   distance is " << store[i].at(store[i].size() - 1);
+        double price = airportsRank(calculatePrice(store[i].at(store[i].size() - 1)) * 0.8, s);
+        cout << " and the corresponding price is " << price << " for economy class and " << price * 2.5 << " for the First class :)";
+        cout << endl;
+        cout << endl;
+    }
+    printCorresAirports(transfer, store);
+}
+
+void Graph::printCorresAirports(V2D airports, vector<vector<int>> store)
+{
+    cout << "The corresponding airports name is: " << endl;
+    int i = 0;
+    for (unsigned i = 0; i < (unsigned)min((int)store.size(), 10); i++)
+    {
+        for (unsigned j = 0; j < airports.size(); j++)
+        {
+            if (store[i][1] == stoi(airports[j][0]))
+            {
+                cout << airports[j][1] << ": " << store[i][1] << ".   ";
+                // i++;
+                // if (i % 4 == 0)
+                // {
+                //     cout << endl;
+                // }
+                break;
+            }
+        }
+    }
+    cout << endl;
+}
+
+double Graph::airportsRank(double price, string rank)
+{
+    int rankInt = stoi(rank);
+    return price * (1 - ((rankInt - 1) * (double)(1 / 967.5)));
 }
 
 void Graph::printAllPathsUtil(int u, int d, bool visited[],
-                              int path[], int &path_index, int distance, int prev, int dis_max)
+                              int path[], int &path_index, int distance, int prev, int dis_max, vector<vector<int>> &store)
 {
     if (distance > 0.6 * dis_max && path_index <= 3)
     {
@@ -195,10 +266,29 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
     if (u == d && path_index <= 3)
     {
 
-        for (int i = 0; i < path_index; i++)
-            cout << path[i] << " ";
-        cout << "**   distance is " << distance;
-        cout << endl;
+        // for (int i = 0; i < path_index; i++)
+        //     cout << path[i] << " ";
+        // cout << "**   distance is " << distance;
+        // cout << endl;
+        if (path_index != 2)
+        {
+            vector<int> toadd;
+            for (int i = 0; i < path_index; i++)
+            {
+                toadd.push_back(path[i]);
+            }
+            toadd.push_back(distance);
+            store.push_back(toadd);
+        }
+        else
+        {
+            cout << "the direct flight is: " << endl;
+            for (int i = 0; i < path_index; i++)
+                cout << path[i] << " ";
+            cout << "**   distance is " << distance;
+            cout << " with price " << calculatePrice(distance);
+            cout << endl;
+        }
     }
     else
     {
@@ -206,7 +296,7 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
         for (i = adj[u].begin(); i != adj[u].end(); ++i)
             if (!visited[(*i).first])
                 printAllPathsUtil((*i).first, d, visited, path,
-                                  path_index, distance, u, dis_max);
+                                  path_index, distance, u, dis_max, store);
     }
     path_index--;
     for (auto it = adj[prev].begin(); it != adj[prev].end(); it++)
@@ -238,5 +328,26 @@ void Graph::printGraph()
                  << w << "\n";
         }
         cout << "\n";
+    }
+}
+
+// in dollar
+int Graph::calculatePrice(int distance)
+{
+    double terminalCharge = 44.18;
+    double shortDisPerMile = 0.2417;
+    double middleDisPerMile = 0.1843;
+    double longDisPerMile = 0.1771;
+    if (distance < 500)
+    {
+        return (int)(distance * shortDisPerMile + 0.5);
+    }
+    else if (distance < 1500)
+    {
+        return (int)(distance * middleDisPerMile + 0.5);
+    }
+    else
+    {
+        return (int)(distance * longDisPerMile + 0.5);
     }
 }

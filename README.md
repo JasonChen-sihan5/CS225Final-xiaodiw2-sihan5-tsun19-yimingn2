@@ -23,7 +23,7 @@
 >    - `cd build`
 >    - `cmake ..`
 >
->    Then you can using `make` command to compile.
+>    Then you can use `make` command to compile.
 
 ### Running Instructions
 

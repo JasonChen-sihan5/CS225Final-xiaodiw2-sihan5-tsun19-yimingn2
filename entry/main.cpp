@@ -160,7 +160,17 @@ int main()
         if (answer == "Y" || answer == "y")
         {
             g.printAllPaths(from, to, distances, airports, fromString, toString);
-            break;
+            string check;
+            cout << "Do you want to check another flight? (Y/N)";
+            cin >> check;
+            if (check == "Y" || check == "y")
+            {
+                continue;
+            }
+            else
+            {
+                break;
+            }
         }
         else
         {

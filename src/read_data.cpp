@@ -1,6 +1,6 @@
 /**
- * @file schedule.cpp
- * Exam scheduling using graph coloring
+ * @file read_data.cpp
+ * Airport graph representation
  */
 
 #include <iostream>
@@ -18,9 +18,6 @@ using namespace std;
  * Given a filename to a CSV-formatted text file, create a 2D vector of strings where each row
  * in the text file is a row in the V2D and each comma-separated value is stripped of whitespace
  * and stored as its own string.
- *
- * Your V2D should match the exact structure of the input file -- so the first row, first column
- * in the original file should be the first row, first column of the V2D.
  *
  * @param filename The filename of a CSV-formatted text file.
  */
@@ -46,87 +43,22 @@ V2D file_to_V2D(const std::string &filename)
 }
 
 /**
- * Given a course roster and a list of students and their courses,
- * perform data correction and return a course roster of valid students (and only non-empty courses).
+ * @brief Construct a new Graph:: Graph object
  *
- * A 'valid student' is a student who is both in the course roster and the student's own listing contains the course
- * A course which has no students (or all students have been removed for not being valid) should be removed
- *
- * @param cv A 2D vector of strings where each row is a course ID followed by the students in the course
- * @param student A 2D vector of strings where each row is a student ID followed by the courses they are taking
+ * @param V number of Vertices
  */
-V2D clean(const V2D &cv, const V2D &student)
-{
-    // YOUR CODE HERE
-    V2D toreturn;
-    V2D another;
-    for (unsigned i = 0; i < cv.size(); i++)
-    {
-
-        std::vector<std::string> toadd;
-        toadd.push_back(cv[i][0]);
-        for (unsigned j = 0; j < student.size(); j++)
-        {
-            if (std::find(student[j].begin(), student[j].end(), cv[i][0]) != student[j].end() && std::find(cv[i].begin(), cv[i].end(), student[j][0]) != cv[i].end())
-            {
-                toadd.push_back(student[j][0]);
-            }
-        }
-        if (toadd.size() != 1)
-        {
-            toreturn.push_back(toadd);
-        }
-    }
-    int j = 0;
-    for (unsigned i = 0; i < toreturn.size(); i++)
-    {
-        if (toreturn[i][0] != cv[j][0])
-        {
-            j++;
-        }
-        std::vector<std::string> toadd;
-        toadd.push_back(toreturn[i][0]);
-        for (unsigned k = 1; k < cv[j].size(); k++)
-        {
-            if (std::find(toreturn[i].begin(), toreturn[i].end(), cv[j][k]) != toreturn[i].end())
-            {
-                toadd.push_back(cv[j][k]);
-            }
-        }
-        another.push_back(toadd);
-        j++;
-    }
-    return another;
-}
-
-/**
- * Given a collection of courses and a list of available times, create a valid scheduling (if possible).
- *
- * A 'valid schedule' should assign each course to a timeslot in such a way that there are no conflicts for exams
- * In other words, two courses who share a student should not share an exam time.
- * Your solution should try to minimize the total number of timeslots but should not exceed the timeslots given.
- *
- * The output V2D should have one row for each timeslot, even if that timeslot is not used.
- *
- * As the problem is NP-complete, your first scheduling might not result in a valid match. Your solution should
- * continue to attempt different schedulings until 1) a valid scheduling is found or 2) you have exhausted all possible
- * starting positions. If no match is possible, return a V2D with one row with the string '-1' as the only value.
- *
- * @param courses A 2D vector of strings where each row is a course ID followed by the students in the course
- * @param timeslots A vector of strings giving the total number of unique timeslots
- */
-V2D schedule(const V2D &courses, const std::vector<std::string> &timeslots)
-{
-    // Your code here!
-    V2D toreturn;
-    return toreturn;
-}
-
 Graph::Graph(int V)
 {
     this->V = V;
 }
 
+/**
+ * @brief Structure to store edges
+ *
+ * @param u Start vertice
+ * @param v End vertice
+ * @param wt Edge weight
+ */
 void Graph::addEdge(int u, int v, int wt)
 {
     if (find(adj[u].begin(), adj[u].end(), pair<int, int>(v, wt)) == adj[u].end())
@@ -135,9 +67,25 @@ void Graph::addEdge(int u, int v, int wt)
     }
 }
 
-void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer, string fromString, string toString)
+/**
+ * @brief Function to print all possible paths for user to select best flight route.
+ * We choose using DFS to navigate possible paths since we incorporate edge weight.
+ * By tracking flight connections using recursion and using back-tracking to record
+ * corresponding fligh route, we filtrate 10 or less(depends on possible routes quantity)
+ * shortest route with at most one flight connection since the flight is domestically.
+ * The 10 shortest path with corresponding price for economy and first class will shown
+ * on the screen.
+ *
+ * @param s Start vertice
+ * @param d End vertice
+ * @param distances Distances of all airports
+ * @param transfer All United States airports with corresponding OpenFlight number
+ * @param fromString Place flight from (IATA)
+ * @param toString Place destination (IATA)
+ */
+vector<vector<int>> Graph::printAllPaths(int s, int d, V2D distances, V2D transfer, string fromString, string toString)
 {
-    vector<vector<int>> store;
+    vector<vector<int>> store; // Vector to store flight connections
     bool *visited = new bool[V];
     int *path = new int[V];
     int path_index = 0;
@@ -146,7 +94,7 @@ void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer, string from
         visited[i] = false;
     }
     string from, to;
-    int distance = 10000;
+    int distance = 10000; // In case we do not have distance between two airports
     for (unsigned i = 0; i < transfer.size(); i++)
     {
         if (stoi(transfer[i][0]) == s)
@@ -166,9 +114,9 @@ void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer, string from
             break;
         }
     }
-    int dis_max = distance * 3;
+    int dis_max = distance * 3; // Recommend distance for user
     cout << dis_max << endl;
-    printAllPathsUtil(s, d, visited, path, path_index, 0, 19999, dis_max, store);
+    printAllPathsUtil(s, d, visited, path, path_index, 0, 19999, dis_max, store); // Helper method
     // for (unsigned i = 0; i < store.size(); i++)
     // {
     //     for (unsigned j = 0; j < store[i].size() - 1; j++)
@@ -178,18 +126,18 @@ void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer, string from
     //     cout << "***   distance is " << store[i].at(store[i].size() - 1);
     //     cout << endl;
     // }
-    sort(store.begin(), store.end(), sortcol);
+    sort(store.begin(), store.end(), sortcol); // sort the vector by its distance (last index)
     cout << "The recommend routes with price according to airports ranking are list below" << endl;
     for (unsigned i = 0; i < (unsigned)min((int)store.size(), 10); i++)
     {
         string s;
         for (unsigned j = 0; j < store[i].size() - 1; j++)
         {
-            if (j == 0)
+            if (j == 0) // Print start IATA number
                 cout << fromString << " ";
-            if (j == 2)
+            if (j == 2) // Print end IATA number
                 cout << toString << " ";
-            if (j == 1)
+            if (j == 1) // Print flight connection IATA number
             {
                 for (unsigned k = 0; k < transfer.size(); k++)
                 {
@@ -204,16 +152,29 @@ void Graph::printAllPaths(int s, int d, V2D distances, V2D transfer, string from
         }
         cout << "***   distance is " << store[i].at(store[i].size() - 1);
         double price = airportsRank(calculatePrice(store[i].at(store[i].size() - 1)) * 0.8, s);
-        cout << " miles, and the corresponding price is $" << price << " for economy class and " << price * 2.5 << " for the First class :)";
+        cout << " miles and the corresponding price is $" << price << " for economy class and $" << price * 2.5 << " for the First class :)";
         cout << endl;
         cout << endl;
     }
     printCorresAirports(transfer, store);
+    vector<vector<int>> toreturn;
+    for (unsigned i = 0; i < (unsigned)min((int)store.size(), 10); i++)
+    {
+
+        toreturn.push_back(store[i]);
+    }
+    return toreturn;
 }
 
+/**
+ * @brief Show user airports with IATA number
+ *
+ * @param airports Entering airports
+ * @param store OpenFlight number
+ */
 void Graph::printCorresAirports(V2D airports, vector<vector<int>> store)
 {
-    cout << "The corresponding airports' names and OpenFlights Code are: " << endl;
+    cout << "The corresponding airports name is: " << endl;
     int i = 0;
     for (unsigned i = 0; i < (unsigned)min((int)store.size(), 10); i++)
     {
@@ -234,20 +195,40 @@ void Graph::printCorresAirports(V2D airports, vector<vector<int>> store)
     cout << endl;
 }
 
+/**
+ * @brief Discount according to airports rank, higher rank with higher price
+ *
+ * @param price Transfer flight price
+ * @param rank Airport rank
+ * @return double Price after discount
+ */
 double Graph::airportsRank(double price, string rank)
 {
     int rankInt = stoi(rank);
     return price * (1 - ((rankInt - 1) * (double)(1 / 967.5)));
 }
 
+/**
+ * @brief Helper function for printAllPaths
+ *
+ * @param u Start vertice
+ * @param d End vertice
+ * @param visited Visited vertices array
+ * @param path Path for flight
+ * @param path_index Number of flight connections
+ * @param distance Distance
+ * @param prev Previous vertice
+ * @param dis_max Maximum distance for good choice
+ * @param store 2D vector to print
+ */
 void Graph::printAllPathsUtil(int u, int d, bool visited[],
                               int path[], int &path_index, int distance, int prev, int dis_max, vector<vector<int>> &store)
 {
-    if (distance > 0.6 * dis_max && path_index <= 3)
+    if (distance > 0.6 * dis_max && path_index <= 3) // Return if distance exceed limit
     {
         return;
     }
-    if (path_index > 3)
+    if (path_index > 3) // Return if more than one flight connection is determined
     {
         return;
     }
@@ -263,7 +244,7 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
         }
     }
     // cout << path_index << endl;
-    if (u == d && path_index <= 3)
+    if (u == d && path_index <= 3) // Found the destination
     {
 
         // for (int i = 0; i < path_index; i++)
@@ -310,6 +291,10 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
     visited[u] = false;
 }
 
+/**
+ * @brief Print the graph
+ *
+ */
 void Graph::printGraph()
 {
     int v, w;
@@ -331,6 +316,12 @@ void Graph::printGraph()
     }
 }
 
+/**
+ * @brief Calculate the ticket price according to it's distance
+ *
+ * @param distance Distance for the flight
+ * @return int Price for the flight
+ */
 // in dollar
 int Graph::calculatePrice(int distance)
 {

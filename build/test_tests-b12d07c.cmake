@@ -1,0 +1,5 @@
+add_test( [==[Correct implementation of graph]==] /workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/test [==[Correct implementation of graph]==]  )
+set_tests_properties( [==[Correct implementation of graph]==] PROPERTIES WORKING_DIRECTORY /workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build)
+add_test( [==[Correct price algorithm]==] /workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build/test [==[Correct price algorithm]==]  )
+set_tests_properties( [==[Correct price algorithm]==] PROPERTIES WORKING_DIRECTORY /workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build)
+set( test_TESTS [==[Correct implementation of graph]==] [==[Correct price algorithm]==])

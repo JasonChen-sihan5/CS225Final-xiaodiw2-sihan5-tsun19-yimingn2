@@ -20,7 +20,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						2
+						2,
+						4
 					]
 				},
 				{
@@ -71,7 +72,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -103,6 +105,13 @@
 					"id" : "src::@145eef247bfb46b6828c",
 					"jsonFile" : "target-src-Debug-ff2f4bb080a7bb06bad9.json",
 					"name" : "src",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test-Debug-371645b09a627e4978e7.json",
+					"name" : "test",
 					"projectIndex" : 0
 				}
 			]

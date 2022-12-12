@@ -1,6 +1,11 @@
 [
 {
   "directory": "/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build",
+  "command": "/usr/bin/clang++  -I/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/lib -I/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/src  -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -g -D_GLIBCXX_DEBUG -O0 -gdwarf-4 -std=gnu++17 -o CMakeFiles/test.dir/tests/tests.cpp.o -c /workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/tests/tests.cpp",
+  "file": "/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/tests/tests.cpp"
+},
+{
+  "directory": "/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/build",
   "command": "/usr/bin/clang++  -I/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/lib -I/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/src  -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -g -D_GLIBCXX_DEBUG -O0 -gdwarf-4 -std=gnu++17 -o CMakeFiles/main.dir/entry/main.cpp.o -c /workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/entry/main.cpp",
   "file": "/workspaces/cs225git/release-f22/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/entry/main.cpp"
 },

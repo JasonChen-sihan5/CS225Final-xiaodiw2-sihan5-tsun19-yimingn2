@@ -27,9 +27,17 @@
 
 ### Running Instructions
 
-#### Exexution	
+​	Running `./main` to execute `main.cpp` in the folder `entry/` directory.
 
-1. Running `./main` to execute `main.cpp` in the folder `entry/` directory.
+​	Then, please walk through the following steps to find the OpenFlight code for each desired airport on [Airport Search](https://openflights.org/html/apsearch):
+
+![Aiport Search1](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/AirportSearch1.png)
+
+![Airport Search2](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/AirportSearch2.png)
+
+![Airport Search3](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/AirportSearch3.png)
+
+![Airport Search4](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/AirportSearch4.png)
 
 
 

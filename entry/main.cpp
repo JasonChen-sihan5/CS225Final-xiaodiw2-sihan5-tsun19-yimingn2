@@ -137,9 +137,9 @@ int main()
     while (true)
     {
         int from, to;
-        cout << "Type the airport from: ";
+        cout << "Type the airport's OpenFlight Code from: ";
         cin >> from;
-        cout << "Type the airport to: ";
+        cout << "Type the airport's OpenFlight Code to: ";
         cin >> to;
         string fromString;
         string toString;

@@ -41,7 +41,7 @@
 
 ![CodeRun1](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/CodeRun1.png)
 
-​	In this case, we use **LAX (3484)** to **ORD (3830)** as example. The program will print out the direct flight information and the 10 most recommended route. The number `5232` is the upper limit of distance of a proper route (3 times of the direct flight distance). <u>Any routes with large distances will be filtered</u>. Besides that, our program will also give all passing airports' OpenFlight codes:
+​	In this case, we use **LAX (3484)** to **ORD (3830)** as example. The program will print out the direct flight information and the 10 most recommended routes. The number `5232` is the upper limit of distance of a proper route (3 times of the direct flight distance). <u>Any routes with large distances will be filtered</u>. Besides that, our program will also give all passing airports' OpenFlight codes:
 
 ​	![CodeRun2](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/CodeRun2.png)
 

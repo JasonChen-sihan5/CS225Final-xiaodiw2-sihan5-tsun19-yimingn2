@@ -39,7 +39,29 @@
 
 ![Airport Search4](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/AirportSearch4.png)
 
+​	After that, execute the command `./main` to see the following interface:
 
+![CodeRun1](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/CodeRun1.png)
+
+​	In this case, we use **LAX (3484)** to **ORD (3830)** as example. The program will print out the direct flight information and the 10 most recommended route. The number `5232` is the upper limit of distance of a proper route (3 times of the direct flight distance). <u>Any routes with large distances will be filtered</u>. Besides that, our program will also give all passing airports' OpenFlight codes:
+
+​	![CodeRun2](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/CodeRun2.png)
+
+​	Our program supports <u>multiple search in one execution</u>:
+
+​	![CodeRun3](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/CodeRun3.png)
+
+​	If there is no path pass the filter, our program will give the **ERROR CODE** `30000`. And if you input `N` to reply the question, the program will quit:
+
+​	![CodeRun4](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/CodeRun4.png)
+
+### Tests
+
+​	All test cases could be found in the folder [tests](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/tree/main/tests). 
+
+​	To run test cases, execute `cd build` in terminal first. Then execute `make test` to compile.
+
+​	Finally, execute `./tests`.
 
 ## Data
 
@@ -54,4 +76,4 @@
 
 ## Documents
 
-​	Our [final proposal](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Final%20Proposal.md), [team contract](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Team%20Contract.md), and the written report can be found in the folder [documents](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/tree/main/documents).
+​	Our [final proposal](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Final%20Proposal.md), [team contract](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Team%20Contract.md), and the [written report]() can be found in the folder [documents](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/tree/main/documents).

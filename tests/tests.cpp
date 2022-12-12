@@ -62,7 +62,7 @@ TEST_CASE("Correct implementation of graph")
             {3484, 3462, 3830, 1810},
             {3484, 3717, 3830, 1823},
             {3484, 3731, 3830, 1832}};
-        vector<vector<int>> lala = g.printAllPaths(3484, 3830, distances, airports, "LAX", "ORD");
+        vector<vector<int>> lala = g.printAllPaths(3484, 3830, distances, airports, "LAX", "ORD", false);
         // cout << lala.size() << endl;
         // for (int i = 0; i < (int)lala.size(); ++i)
         // {
@@ -78,7 +78,7 @@ TEST_CASE("Correct implementation of graph")
     SECTION("Flight with no routes")
     {
         vector<vector<int>> ints = {};
-        vector<vector<int>> lala = g.printAllPaths(3490, 3484, distances, airports, "", "LAX");
+        vector<vector<int>> lala = g.printAllPaths(3490, 3484, distances, airports, "", "LAX", false);
         REQUIRE(lala == ints);
     }
     SECTION("Flight with less than 10 routes")
@@ -87,7 +87,7 @@ TEST_CASE("Correct implementation of graph")
             {3484, 3877, 3498, 1334},
             {3484, 3751, 3498, 1466},
             {3484, 3858, 3498, 1984}};
-        vector<vector<int>> lala = g.printAllPaths(3484, 3498, distances, airports, "LAX", "MOT");
+        vector<vector<int>> lala = g.printAllPaths(3484, 3498, distances, airports, "LAX", "MOT", false);
         // for (int i = 0; i < (int)lala.size(); ++i)
         // {
         //     for (int j = 0; j < (int)lala[i].size() - 1; ++j)
@@ -98,6 +98,20 @@ TEST_CASE("Correct implementation of graph")
         //     std::cout << "" << std::endl;
         // }
         REQUIRE(lala == ints);
+    }
+    SECTION("Flight on weekend with price overflow")
+    {
+        vector<vector<int>> ints = {
+            {3484, 3877, 3498, 1334},
+            {3484, 3751, 3498, 1466},
+            {3484, 3858, 3498, 1984}};
+        vector<vector<int>> lala = g.printAllPaths(3484, 3498, distances, airports, "LAX", "MOT", true);
+        double PriceFirst = 233.231;
+        double PriceSecond = 258.932;
+        double PriceThird = 332.432;
+        REQUIRE((int)(g.airportsRank(g.calculatePrice(lala[0][3] * 0.8), "14") * 1.2) == (int)PriceFirst);
+        REQUIRE((int)(g.airportsRank(g.calculatePrice(lala[1][3] * 0.8), "14") * 1.2) == (int)PriceSecond);
+        REQUIRE((int)(g.airportsRank(g.calculatePrice(lala[2][3] * 0.8), "14") * 1.2) == (int)PriceThird);
     }
 }
 

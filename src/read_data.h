@@ -22,6 +22,17 @@
 using namespace std;
 typedef std::vector<std::vector<std::string>> V2D;
 
+enum Airlines
+{
+  Delta = 98,
+  Southwest = 100,
+  American = 89,
+  United = 96,
+  JetBlue = 86,
+  Alaska = 72,
+  Frontier = 48,
+  Spirit = 44
+};
 /**
  * Given a filename to a CSV-formatted text file, create a 2D vector of strings where each row
  * in the text file is a row in the V2D and each comma-separated value is stripped of whitespace
@@ -45,7 +56,7 @@ class Graph
 public:
     Graph(int V);
     void addEdge(int u, int v, int wt);
-    vector<vector<int>> printAllPaths(int s, int d, V2D distances, V2D transfer, string from, string to);
+    vector<vector<int>> printAllPaths(int s, int d, V2D distances, V2D transfer, string from, string to, bool week);
     void printGraph();
     int calculatePrice(int distance);
     double airportsRank(double price, string rank);

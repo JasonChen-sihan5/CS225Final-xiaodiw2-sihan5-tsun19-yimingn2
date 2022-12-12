@@ -137,29 +137,96 @@ int main()
     while (true)
     {
         int from, to;
-        cout << "Type the airport's OpenFlight Code from: ";
+        cout << "Type the airport from: ";
         cin >> from;
-        cout << "Type the airport's OpenFlight Code to: ";
+        cout << "Type the airport to: ";
         cin >> to;
         string fromString;
         string toString;
+        bool check1, check2 = false;
         for (unsigned i = 0; i < airports.size(); i++)
         {
             if (from == stoi(airports[i][0]))
             {
+                check1 = true;
                 fromString = airports[i][1];
             }
             if (to == stoi(airports[i][0]))
             {
+                check2 = true;
                 toString = airports[i][1];
             }
+        }
+        if (check1 == false)
+        {
+            cout << "Wrong Starting airport!!!! Please enter again" << endl;
+            continue;
+        }
+        if (check2 == false)
+        {
+            cout << "Wrong Destination!!!! Please enter again" << endl;
+            continue;
         }
         string answer;
         cout << "Please make sure you want to go from " << fromString << " to " << toString << "(Y/N)";
         cin >> answer;
         if (answer == "Y" || answer == "y")
         {
-            g.printAllPaths(from, to, distances, airports, fromString, toString);
+            string week;
+            cout << "Are you traveling on weekend? (Y/N)";
+            cin >> week;
+            bool weekend;
+            if (week == "Y" || week == "y")
+                weekend = true;
+            else
+                weekend = false;
+            vector<vector<int>> store = g.printAllPaths(from, to, distances, airports, fromString, toString, weekend);
+            int size = store.size();
+            int judge;
+            cout << "Which flight are you interested in ??";
+            cin >> judge;
+            vector<int> result = store[judge];
+            cout << "We have the recommend Airlines list below: " << endl;
+            string s;
+            for (unsigned k = 0; k < airports.size(); k++)
+            {
+                if (result[1] == stoi(airports[k][0]))
+                {
+                  s = airports[k][2];
+                  break;
+                }
+            }
+            double price = g.airportsRank(g.calculatePrice(result[3] * 0.8), s);
+            if (weekend)
+                price = price * 1.2;
+            double Southwestprice = price * Airlines::Southwest / 100;
+            cout
+                << "Southwest Airlines : Economy : " << Southwestprice << "$. First Class : " << Southwestprice * 2.5 << "$" << endl;
+            cout << endl;
+            double Unitedprice = price * Airlines::United / 100;
+            cout
+                << "United Airlines : Economy : " << Unitedprice << "$. First Class : " << Unitedprice * 2.5 << "$" << endl;
+            cout << endl;
+            double Americanprice = price * Airlines::American / 100;
+            cout
+                << "American Airlines : Economy : " << Americanprice << "$. First Class : " << Americanprice * 2.5 << "$" << endl;
+            cout << endl;
+            double JetBlueprice = price * Airlines::JetBlue / 100;
+            cout
+                << "JetBlue Airlines : Economy : " << JetBlueprice << "$. First Class : " << JetBlueprice * 2.5 << "$" << endl;
+            cout << endl;
+            double Alaskaprice = price * Airlines::Alaska / 100;
+            cout
+                << "Alaska Airlines : Economy : " << Alaskaprice << "$. First Class : " << Alaskaprice * 2.5 << "$" << endl;
+            cout << endl;
+            double Frontierprice = price * Airlines::Frontier / 100;
+            cout
+                << "Frontier Airlines : Economy : " << Frontierprice << "$. Frontier do not have First class." << endl;
+            cout << endl;
+            double Spiritprice = price * Airlines::Spirit / 100;
+            cout
+                << "Spirit Airlines : Economy : " << Spiritprice << "$. Spirit do not have First class." << endl;
+            cout << endl;
             string check;
             cout << "Do you want to check another flight? (Y/N)";
             cin >> check;

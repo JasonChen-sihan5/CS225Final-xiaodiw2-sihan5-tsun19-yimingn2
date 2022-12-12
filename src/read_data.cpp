@@ -127,7 +127,7 @@ vector<vector<int>> Graph::printAllPaths(int s, int d, V2D distances, V2D transf
     //     cout << endl;
     // }
     sort(store.begin(), store.end(), sortcol); // sort the vector by its distance (last index)
-    cout << "The recommend routes with price according to airports ranking are list below" << endl;
+    cout << "The recommend routes with price according to airports ranking are list below:" << endl;
     for (unsigned i = 0; i < (unsigned)min((int)store.size(), 10); i++)
     {
         string s;
@@ -267,7 +267,7 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
             for (int i = 0; i < path_index; i++)
                 cout << path[i] << " ";
             cout << "**   distance is " << distance;
-            cout << " with price " << calculatePrice(distance);
+            cout << " miles with price $" << calculatePrice(distance);
             cout << endl;
         }
     }

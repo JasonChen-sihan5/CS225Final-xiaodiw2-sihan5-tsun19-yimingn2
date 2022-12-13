@@ -156,7 +156,7 @@ vector<vector<int>> Graph::printAllPaths(int s, int d, V2D distances, V2D transf
     double price = airportsRank(calculatePrice(store[i].at(store[i].size() - 1)) * 0.8, s);
     if (week)
       price = price * 1.2;
-    cout << " and the corresponding price is " << price << " for economy class and " << price * 2.5 << " for the First class :)";
+    cout << " miles and the corresponding price is $" << price << " for economy class and $" << price * 2.5 << " for the First class :)";
     cout << endl;
     cout << endl;
   }
@@ -271,7 +271,7 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
       for (int i = 0; i < path_index; i++)
         cout << path[i] << " ";
       cout << "**   distance is " << distance;
-      cout << " with price " << calculatePrice(distance);
+      cout << " miles with price $" << calculatePrice(distance);
       cout << endl;
     }
   }

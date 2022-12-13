@@ -41,9 +41,17 @@
 
 ![CodeRun1](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/CodeRun1.png)
 
-​	In this case, we use **LAX (3484)** to **ORD (3830)** as example. The program will print out the direct flight information and the 10 most recommended routes. The number `5232` is the upper limit of distance of a proper route (3 times of the direct flight distance). <u>Any routes with large distances will be filtered</u>. Besides that, our program will also give all passed airports' OpenFlight codes:
+​	In this case, we use **LAX (3484)** to **ORD (3830)** as example. The program will print out the direct flight information and the 10 most recommended routes. The number `5232` is the upper limit of distance of a proper route (3 times of the direct flight distance). <u>Any routes with large distances will be filtered</u>:
 
 ​	![CodeRun2](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/CodeRun2.png)
+
+​	The weekend price will be a little be higher:
+
+​	![CodeRun21]([CodeRun21.png](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/CodeRun21.png))
+
+​	Then you can select one of the favored route by entering numbers from <u>**0 to 9**</u>. Then the program will give the information of this route in each airline. In this case, we choose the first route, type 0:
+
+​	![CodeRun22](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Materials/CodeRun22.png)
 
 ​	Our program supports <u>multiple search in one execution</u>:
 

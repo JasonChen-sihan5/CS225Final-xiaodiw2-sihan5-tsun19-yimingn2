@@ -82,4 +82,4 @@
 
 ## Documents
 
-​	Our [final proposal](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Final%20Proposal.md), [team contract](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Team%20Contract.md), and the [written report]() can be found in the folder [documents](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/tree/main/documents).
+​	Our [final proposal](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Final%20Proposal.md), [team contract](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/Team%20Contract.md), and the [written report](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/blob/main/documents/results.md) can be found in the folder [documents](https://github.com/JasonChen-sihan5/CS225Final-xiaodiw2-sihan5-tsun19-yimingn2/tree/main/documents).
